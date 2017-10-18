@@ -1,0 +1,44 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+    <p>
+        In Search Page
+    </p>
+    <form action="#" name="sc.myForm">
+        <div class="form-group">
+            <label for="beerName">Beer Name</label>
+            <input type="text" autofocus required id="beerName" class="form-control" placeholder="Beer Name" ng-model="sc.search.inputBeer">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="breweryName">Brewery Name</label>
+            <input type="text" autofocus required id="breweryName" class="form-control" placeholder="Brewery Name" ng-model="sc.search.inputBrewery">
+        </div>
+        <div class="form-group">
+            <input type="button" value="Search" class="form-control" ng-click="sc.searchBeer()">
+            <input type="button" value="Search Brewery" class="form-control" ng-click="sc.searchBrewery()">
+        </div>
+    </form>
+
+    <table class="table table-hover">
+        <caption>Search Results</caption>
+        <thead>
+            <tr>
+                <th>Beer</th>
+                <th>Brewery</th>
+                <th>Style</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- <tbody ng-repeat="brewery in sc.returnedBreweries.list.list"> -->
+            <tr ng-repeat="beer in sc.returnedBeers.list.list | limitTo:10" ng-href="#/beer" ng-click="sc.beerDetail(beer)">
+                <td>{{beer.name}}</td>
+                <td>{{beer.breweries[0].name}}</td>
+                <td>{{beer.style.name}}</td>
+            </tr>
+            <!-- <tr>
+                <td>{{brewery.name}}</td>
+            </tr> -->
+        </tbody>
+    </table>
+
+</div>

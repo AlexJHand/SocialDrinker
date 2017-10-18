@@ -22,11 +22,19 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/info', {
-      templateUrl: '/views/templates/info.html',
-      controller: 'InfoController',
+    .when('/search', {
+      templateUrl: '/views/templates/search.html',
+      controller: 'SearchController as sc',
       resolve: {
         getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    }).when('/beer', {
+      templateUrl: '/views/templates/beer.html',
+      controller: 'SearchController as sc',
+      resolve: {
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
