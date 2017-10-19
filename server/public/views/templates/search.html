@@ -3,23 +3,28 @@
     <p>
         In Search Page
     </p>
-    <form action="#" name="sc.myForm">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-info btn-block btn-default active" ng-click="sc.showBeerSearch()">Search By Beer</button>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-info btn-block" ng-click="sc.showBrewerySearch()">Search By Brewery</button>
+        </div>
+    </div>
+
+    <form action="#" name="sc.beerForm" ng-show="sc.showBeerInput">
         <div class="form-group">
             <label for="beerName">Beer Name</label>
             <input type="text" autofocus required id="beerName" class="form-control" placeholder="Beer Name" ng-model="sc.search.inputBeer">
         </div>
         <br>
         <div class="form-group">
-            <label for="breweryName">Brewery Name</label>
-            <input type="text" autofocus required id="breweryName" class="form-control" placeholder="Brewery Name" ng-model="sc.search.inputBrewery">
-        </div>
-        <div class="form-group">
             <input type="button" value="Search" class="form-control" ng-click="sc.searchBeer()">
-            <input type="button" value="Search Brewery" class="form-control" ng-click="sc.searchBrewery()">
         </div>
     </form>
 
-    <table class="table table-hover">
+    <table class="table table-hover" ng-show="sc.showBeerInput">
         <caption>Search Results</caption>
         <thead>
             <tr>
@@ -29,15 +34,37 @@
             </tr>
         </thead>
         <tbody>
-        <!-- <tbody ng-repeat="brewery in sc.returnedBreweries.list.list"> -->
             <tr ng-repeat="beer in sc.returnedBeers.list.list | limitTo:10" ng-href="#/beer" ng-click="sc.beerDetail(beer)">
-                <td>{{beer.name}}</td>
+                <td>{{beer.nameDisplay}}</td>
                 <td>{{beer.breweries[0].name}}</td>
                 <td>{{beer.style.name}}</td>
             </tr>
-            <!-- <tr>
+        </tbody>
+    </table>
+
+    <form action="#" name="sc.breweryForm" ng-hide="sc.showBeerInput">
+        <div class="form-group">
+            <label for="breweryName">Brewery Name</label>
+            <input type="text" autofocus required id="breweryName" class="form-control" placeholder="Brewery Name" ng-model="sc.search.inputBrewery">
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="button" value="Search Brewery" class="form-control" ng-click="sc.searchBrewery()">
+        </div>
+    </form>
+
+    <table class="table table-hover" ng-hide="sc.showBeerInput">
+        <caption>Search Results</caption>
+        <thead>
+            <tr>
+                <th>Brewery</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="brewery in sc.returnedBreweries.list.list | limitTo:10" ng-href="#/brewery" ng-click="sc.breweryDetail(brewery)">
+            <!-- <tr ng-repeat="brewery in sc.returnedBreweries.list.list | limitTo:10" ng-click="sc.breweryDetail(brewery).then(sc.showBreweryPage())"></tr> -->
                 <td>{{brewery.name}}</td>
-            </tr> -->
+            </tr>
         </tbody>
     </table>
 

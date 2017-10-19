@@ -6,15 +6,10 @@ var request = require('request');
 // Building query
 var baseUrl = "http://api.brewerydb.com/v2";
 var search = "/search?q=";
-// var beer = "Darkness";
-//var brewery = 'Surly';
 var type = "&type=beer";
-// var type = "&type=brewery";
 var keyHead = "&key=";
 var key = process.env.API_KEY;
 var withBreweries = '&withBreweries=y';
-// var fullUrl = baseUrl + search + beer + type + withBreweries + keyHead + key;
-// var fullUrl = baseUrl + search + brewery + type + withBreweries + keyHead + key;
 
 
 

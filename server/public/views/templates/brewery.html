@@ -1,0 +1,25 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container" ng-init="sc.searchBreweryBeers(brewery)">
+    <a href="/#/search">Back</a>
+    <h1>{{sc.UserService.brewery.name}}</h1>
+    <img ng-src="{{sc.UserService.brewery.images.large}}" ng-if="sc.UserService.brewery.images.large">
+    <h3>{{sc.UserService.brewery.id}}</h3>
+
+    <table class="table table-hover">
+        <caption>Search Results</caption>
+        <thead>
+            <tr>
+                <th>Beer</th>
+                <th>Brewery</th>
+                <th>Style</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="beer in sc.returnedBreweryBeers.list | limitTo:10 | filter:beer.breweries[0].name:sc.UserService.brewery.name" ng-href="#/beer" ng-click="sc.beerDetail(beer)">
+                <td>{{beer.nameDisplay}}</td>
+                <td>{{beer.style.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -4,6 +4,8 @@ myApp.controller('SearchController', function ($location, UserService) {
     vm.UserService = UserService;
     vm.returnedBeers = {list: []};
     vm.returnedBreweries = {list: []};
+    vm.returnedBreweryBeers = {list: []};
+    vm.showBeerInput = true;
     vm.breweryId = '';
 
     vm.search = {
@@ -13,6 +15,8 @@ myApp.controller('SearchController', function ($location, UserService) {
     // vm.message = '';
     vm.returnedBeers.list = UserService.beers;
     vm.returnedBreweries.list = UserService.breweries;
+    vm.returnedBreweryBeers = UserService.breweryBeers;
+    vm.showRatingsInputs = false;
 
     vm.beerDetail = function(beer) {
         console.log('In beerDetail');
@@ -21,13 +25,22 @@ myApp.controller('SearchController', function ($location, UserService) {
         vm.UserService.beer = beer;
     }
 
+    vm.breweryDetail = function(brewery) {
+        console.log('In breweryDetail()');
+        console.log('Brewery clicked:', brewery);
+        $location.path('/brewery');
+        vm.breweryId = brewery.id;
+        console.log('brewery.id', brewery.id);
+        vm.UserService.brewery = brewery;
+    }
+
     vm.searchBeer = function () {
         console.log('In searchBeer()');
         console.log('vm.search.beer:', vm.search.inputBeer);
         UserService.getBeer(vm.search.inputBeer);
         console.log('vm.returnedBeers: ', vm.returnedBeers);
         vm.search = {};
-        vm.myForm.$setPristine();    
+        vm.beerForm.$setPristine();    
     }
 
     vm.searchBrewery = function () {
@@ -35,9 +48,38 @@ myApp.controller('SearchController', function ($location, UserService) {
         console.log('vm.search.brewery:', vm.search.inputBrewery);
         UserService.getBrewery(vm.search.inputBrewery);
         console.log('vm.returnedBreweries: ', vm.returnedBreweries);
-        // vm.breweryId = vm.returnedBreweries.list.list[0].id;
         console.log('vm.breweryId', vm.breweryId);
         vm.search = {};
-        vm.myForm.$setPristine();
+        vm.breweryForm.$setPristine();
     }
+
+    vm.searchBreweryBeers = function () {
+        console.log('In searchBreweryBeers()');
+        console.log('UserService.brewery ->', UserService.brewery);
+        UserService.getBreweryBeers(UserService.brewery.id).then(function () {
+
+        console.log('vm.returnedBreweryBeers: ', vm.returnedBreweryBeers);
+        })
+    }
+
+    // vm.showBreweryPage = function () {
+    //     $location.path('/brewery');
+    // }
+
+    vm.showRatings = function () {
+        console.log('In showRatings()');
+        vm.showRatingsInputs = true;
+    }
+
+    vm.showBeerSearch = function () {
+        vm.showBeerInput = true;
+    }
+
+    vm.showBrewerySearch = function () {
+        vm.showBeerInput = false;
+    }
+
+
+
+
 });

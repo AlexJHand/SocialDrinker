@@ -38,6 +38,14 @@ myApp.config(function($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
+    }).when('/brewery', {
+      templateUrl: '/views/templates/brewery.html',
+      controller: 'SearchController as sc',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
     })
     .otherwise({
       redirectTo: 'home'

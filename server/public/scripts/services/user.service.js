@@ -5,10 +5,14 @@ myApp.service('UserService', function ($http, $location) {
 
   self.userObject = {};
   self.beer = {};
+  self.brewery = {};
   self.beers = {
     list: []
   };
   self.breweries = {
+    list: []
+  }
+  self.breweryBeers = {
     list: []
   }
 
@@ -32,6 +36,19 @@ myApp.service('UserService', function ($http, $location) {
       console.log('Received', response);
       self.breweries.list = response.data.data;
       console.log(self.breweries.list);
+    });
+  }
+
+  self.getBreweryBeers = function (breweryIn) {
+    console.log('breweryIn:', breweryIn);
+    return $http({
+      method: 'GET',
+      url: '/brewery/' + breweryIn + '/beers'
+    }).then(function (response) {
+      console.log('Received', response);
+      self.breweryBeers.list = response.data.data;
+      console.log('response.data.data', response.data.data);
+      console.log(self.breweryBeers.list);
     });
   }
 
