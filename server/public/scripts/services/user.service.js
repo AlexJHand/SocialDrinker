@@ -16,6 +16,9 @@ myApp.service('UserService', function ($http, $location) {
   self.breweryBeers = {
     list: []
   }
+  self.userBeers = {
+    list: []
+  }
 
   self.addBeer = function () {
     console.log('In UserService.addBeer()');
@@ -76,6 +79,18 @@ myApp.service('UserService', function ($http, $location) {
         $location.path("/home");
       }
     });
+  }
+
+  self.getUserBeers = function () {
+    console.log('In getUserBeers');
+    $http({
+      method: 'GET',
+      url: '/list'
+    }).then(function (response) {
+      console.log('Received:', response);
+      self.userBeers.list = response.data.data;
+      console.log('self.userBeers.list', self.userBeers.list);
+    })
   }
 
   self.logout = function () {

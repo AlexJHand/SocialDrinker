@@ -2,6 +2,45 @@
 var router = require('express').Router();
 var pool = require('../modules/pool.js');
 
+// Get from database
+router.get('/', function (req, res) {
+    console.log('In post route');
+    console.log('req.body:', req.body);
+
+    if (req.isAuthenticated()) {
+        // send back user object from database
+        console.log('logged in', req.user);
+
+        pool.connect(function (err, client, done) {
+            if (err) {
+                console.log('Connection error:', err);
+                res.sendStatus(500);
+            } else {
+                var queryString = '';
+                var values = [];
+                client.query(queryString, values, function (error, result) {
+                    done();
+                    if (error) {
+                        console.log('Error:', error);
+                        res.sendStatus(500);
+                    } else {
+                        res.sendStatus(201);
+                        console.log('result:', result);
+                    } // end else
+
+                }); // end client.query
+            } // end else
+        }); // end pool.connect
+
+    } else {
+        // failure best handled on the server. do redirect here.
+        console.log('not logged in');
+        // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+        res.send(false);
+    } // end else
+
+}); // end Get
+
 // Post to database
 router.post('/', function (req, res) {
     console.log('In post route');

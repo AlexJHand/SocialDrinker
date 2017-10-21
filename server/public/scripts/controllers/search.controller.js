@@ -13,6 +13,8 @@ myApp.controller('SearchController', function ($location, UserService) {
         inputBrewery: ''
     };
     // vm.message = '';
+
+    // Think about putting these inside of the functions that get them.
     vm.returnedBeers.list = UserService.beers;
     vm.returnedBreweries.list = UserService.breweries;
     vm.returnedBreweryBeers = UserService.breweryBeers;
@@ -72,10 +74,6 @@ myApp.controller('SearchController', function ($location, UserService) {
         console.log('vm.returnedBreweryBeers: ', vm.returnedBreweryBeers);
         })
     }
-
-    // vm.showBreweryPage = function () {
-    //     $location.path('/brewery');
-    // }
 
     vm.showRatings = function () {
         console.log('In showRatings()');

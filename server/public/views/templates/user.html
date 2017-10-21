@@ -1,8 +1,26 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
+<div class="container" ng-init="uc.displayUserBeers()">
 
     <h1 id="welcome" class="lead">{{uc.userObject.userName}}</h1>
     
-    <div>This is where the beers that {{uc.userObject.userName}} has drunk will go.</div>
+
+    <h2>Let's display some stuff.</h2>
+    <table class="table table-hover">
+        <caption>Search Results</caption>
+        <thead>
+            <tr>
+                <th>Beer</th>
+                <th>Brewery</th>
+                <th>Style</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="beer in sc.returnedBeers.list.list" >
+                <td>{{beer.nameDisplay}}</td>
+                <td>{{beer.breweries[0].name}}</td>
+                <td>{{beer.style.name}}</td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>
