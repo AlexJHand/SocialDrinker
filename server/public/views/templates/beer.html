@@ -3,9 +3,9 @@
     <a href="/#/search">Back</a>
     <h1>{{sc.UserService.beer.nameDisplay}}</h1>
     <img ng-src="{{sc.UserService.beer.labels.large}}" ng-if="sc.UserService.beer.labels.large">
-    <div>Brewery: {{sc.UserService.beer.breweries[0].name}}</div>
-    <div>Location: {{sc.UserService.beer.breweries[0].locations[0].locality}}, {{sc.UserService.beer.breweries[0].locations[0].region}}</div>
-    <div>Country: {{sc.UserService.beer.breweries[0].locations[0].country.displayName}}</div>
+    <div ng-if="sc.UserService.beer.breweries[0].name">Brewery: {{sc.UserService.beer.breweries[0].name}}</div>
+    <div ng-if="sc.UserService.beer.breweries[0].locations[0].locality">Location: {{sc.UserService.beer.breweries[0].locations[0].locality}}, {{sc.UserService.beer.breweries[0].locations[0].region}}</div>
+    <div ng-if="sc.UserService.beer.breweries[0].locations[0].country.displayName">Country: {{sc.UserService.beer.breweries[0].locations[0].country.displayName}}</div>
     <div ng-if="sc.UserService.beer.style.shortName">Style: {{sc.UserService.beer.style.shortName}}</div>
     <div ng-if="sc.UserService.beer.abv">Abv: {{sc.UserService.beer.abv}}%</div>
     <div ng-if="sc.UserService.beer.ibu">Ibu: {{sc.UserService.beer.ibu}}</div>
@@ -15,7 +15,7 @@
         <form action="#" name="sc.ratingsForm">
             <div class="form-group">
                 <label for="rating">Rating</label>
-                <select id="rating" class="form-control">
+                <select id="rating" class="form-control" ng-model="sc.rating">
                     <option> </option>
                     <option>5</option>
                     <option>4</option>
@@ -26,10 +26,10 @@
             </div>
             <div class="form-group">
                 <label for="comment">Leave a Comment</label>
-                <textarea name="comment" id="comment" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" ng-model="sc.comment"></textarea>
             </div>
             <div class="form-group">
-                <input type="button" value="Add Beer" class="form-control" ng-click="">
+                <input type="button" value="Add Beer" class="form-control" ng-click="sc.addBeer(rating, comment)">
             </div>
         </form>
 

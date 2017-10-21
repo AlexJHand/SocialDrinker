@@ -4,6 +4,7 @@ myApp.service('UserService', function ($http, $location) {
   var self = this;
 
   self.userObject = {};
+  self.ratingObject = {};
   self.beer = {};
   self.brewery = {};
   self.beers = {
@@ -16,6 +17,16 @@ myApp.service('UserService', function ($http, $location) {
     list: []
   }
 
+  self.addBeer = function () {
+    console.log('In UserService.addBeer()');
+    $http({
+      method: 'POST',
+      url: '/list',
+      data: [self.beer, self.userObject.userName, self.ratingObject]
+    }).then(function (response) {
+      console.log('Response:', response);
+    })
+  }
 
   self.getBeer = function (beerIn) {
     $http({

@@ -13,6 +13,7 @@ var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
 var beerRouter = require('./routes/beer.router');
 var breweryRouter = require('./routes/brewery.router');
+var listRouter = require('./routes/list.router');
 
 var port = process.env.PORT || 5000;
 
@@ -33,6 +34,7 @@ app.use(passport.session());
 // Routes
 app.use('/beer', beerRouter);
 app.use('/brewery', breweryRouter);
+app.use('/list', listRouter);
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
 

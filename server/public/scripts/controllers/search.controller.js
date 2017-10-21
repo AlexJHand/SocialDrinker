@@ -18,6 +18,17 @@ myApp.controller('SearchController', function ($location, UserService) {
     vm.returnedBreweryBeers = UserService.breweryBeers;
     vm.showRatingsInputs = false;
 
+    vm.addBeer = function () {
+        console.log('In sc.addBeer()');
+        console.log('vm.rating:', vm.rating);
+        console.log('vm.comment:', vm.comment);
+        vm.UserService.ratingObject = {
+            rating: vm.rating,
+            comment: vm.comment
+        } 
+        UserService.addBeer();
+    }
+    
     vm.beerDetail = function(beer) {
         console.log('In beerDetail');
         console.log('Beer clicked:', beer);
