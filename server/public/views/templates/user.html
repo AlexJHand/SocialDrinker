@@ -11,14 +11,12 @@
             <tr>
                 <th>Beer</th>
                 <th>Brewery</th>
-                <th>Style</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="beer in sc.returnedBeers.list.list" >
-                <td>{{beer.nameDisplay}}</td>
-                <td>{{beer.breweries[0].name}}</td>
-                <td>{{beer.style.name}}</td>
+            <tr ng-repeat="beer in uc.returnedUserBeers.list.list" >
+                <td>{{beer.beer_name}}</td>
+                <td>{{beer.brewery_name}}</td>
             </tr>
         </tbody>
     </table>

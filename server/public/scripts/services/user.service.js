@@ -88,7 +88,7 @@ myApp.service('UserService', function ($http, $location) {
       url: '/list'
     }).then(function (response) {
       console.log('Received:', response);
-      self.userBeers.list = response.data.data;
+      self.userBeers.list = response.data.rows;
       console.log('self.userBeers.list', self.userBeers.list);
     })
   }

@@ -16,15 +16,15 @@ router.get('/', function (req, res) {
                 console.log('Connection error:', err);
                 res.sendStatus(500);
             } else {
-                var queryString = '';
-                var values = [];
+                var queryString = 'SELECT beersdrank.beer_name, beersdrank.brewery_name, users_beersdrank.rating, users_beersdrank.comment FROM users_beersdrank LEFT JOIN beersdrank ON beersdrank.id=users_beersdrank.beersdrank_id WHERE users_beersdrank.users_id=$1';
+                var values = [req.user.id];
                 client.query(queryString, values, function (error, result) {
                     done();
                     if (error) {
                         console.log('Error:', error);
                         res.sendStatus(500);
                     } else {
-                        res.sendStatus(201);
+                        res.send(result);
                         console.log('result:', result);
                     } // end else
 

@@ -4,11 +4,11 @@ myApp.controller('UserController', function(UserService) {
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
   vm.returnedUserBeers = {list: []};
-  vm.returnedUserBeers = UserService.userBeers.list
+  vm.returnedUserBeers.list = UserService.userBeers
 
   vm.displayUserBeers = function () {
     console.log('In displayUserBeers()');
-    UserService.displayUserBeers();
+    UserService.getUserBeers();
     console.log('vm.returnedUserBeers:', vm.returnedUserBeers);
   }
 });
