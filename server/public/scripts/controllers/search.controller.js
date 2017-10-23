@@ -14,7 +14,6 @@ myApp.controller('SearchController', function ($location, UserService) {
     };
     // vm.message = '';
 
-    // Think about putting these inside of the functions that get them.
     vm.returnedBeers.list = UserService.beers;
     vm.returnedBreweries.list = UserService.breweries;
     vm.returnedBreweryBeers = UserService.breweryBeers;
