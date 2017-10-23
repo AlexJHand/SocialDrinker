@@ -118,36 +118,8 @@ router.post('/', function (req, res) {
                                 }); // end client.query
                             } // end else
                         }) // end client.query
-                    }
-                })
-
-
-
-                // var queryString = 'INSERT INTO beersdrank (beer_name, brewery_name, brewery_location, brewery_country, style, description) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;';
-                // var values = [beerName, beerBrewery, beerLocation, beerCountry, beerStyle, beerDesc];
-                // client.query(queryString, values, function (error, result) {
-                //     done();
-                //     if (error) {
-                //         console.log('Error:', error);
-                //         res.sendStatus(500);
-                //     } else {
-                //         console.log('result:', result);
-                //         var beerId = result.rows[0].id;
-                //         console.log('beerId:', beerId);
-                //         var queryString2 = 'INSERT INTO users_beersdrank (users_id, beersdrank_id, rating, comment) VALUES ($1, $2, $3, $4);';
-                //         var values2 = [userId, beerId, beerRating, beerComment];
-                //         client.query(queryString2, values2, function (error, result2) {
-                //             done();
-                //             if (error) {
-                //                 console.log('Error:', error);
-                //                 res.sendStatus(500);
-                //             } else {
-                //                 res.sendStatus(201);
-                //                 console.log('result2:', result2);
-                //             }
-                //         }); // end client.query
-                //     } // end else
-                // }) // end client.query
+                    } // end else
+                }) // end client.query
             } // end else
         }); // end pool.connect
 
