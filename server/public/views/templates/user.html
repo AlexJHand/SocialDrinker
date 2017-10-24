@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="beer in uc.returnedUserBeers.list.list" >
+            <tr ng-repeat="beer in uc.returnedUserBeers.list.list" ng-href="#/userBeer" ng-click="uc.userBeerDetail(beer)">
                 <td>{{beer.beer_name}}</td>
                 <td>{{beer.brewery_name}}</td>
             </tr>

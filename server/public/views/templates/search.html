@@ -24,7 +24,8 @@
         </div>
     </form>
 
-    <table class="table table-hover" ng-show="sc.showBeerInput">
+    <div ng-show="sc.showBeerInput">
+    <table class="table table-hover">
         <caption>Search Results</caption>
         <thead>
             <tr>
@@ -34,13 +35,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="beer in sc.returnedBeers.list.list | limitTo:10" ng-href="#/beer" ng-click="sc.beerDetail(beer)">
+            <tr ng-repeat="beer in sc.returnedBeers.list.list" ng-href="#/beer" ng-click="sc.beerDetail(beer)">
                 <td>{{beer.nameDisplay}}</td>
                 <td>{{beer.breweries[0].name}}</td>
                 <td>{{beer.style.name}}</td>
             </tr>
         </tbody>
     </table>
+    <ul class="pagination">
+        <li>
+            <a href="" aria-label="Previous"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        </li>
+        <li ng-repeat="page in sc.pageList"><a ng-click="sc.pageResults(page, sc.returnedBreweryBeers)">{{page}}</a></li>
+        <li>
+            <a href="" aria-label="Next">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </a>
+        </li>
+    </ul>
+    </div>
 
     <form action="#" name="sc.breweryForm" ng-hide="sc.showBeerInput">
         <div class="form-group">
@@ -62,7 +75,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="brewery in sc.returnedBreweries.list.list | limitTo:10" ng-href="#/brewery" ng-click="sc.breweryDetail(brewery)">
-            <!-- <tr ng-repeat="brewery in sc.returnedBreweries.list.list | limitTo:10" ng-click="sc.breweryDetail(brewery).then(sc.showBreweryPage())"></tr> -->
                 <td>{{brewery.name}}</td>
             </tr>
         </tbody>

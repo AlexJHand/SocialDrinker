@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -18,6 +18,14 @@ myApp.config(function($routeProvider, $locationProvider) {
       controller: 'UserController as uc',
       resolve: {
         getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    }).when('/userBeer', {
+      templateUrl: '/views/templates/userBeer.html',
+      controller: 'UserController as uc',
+      resolve: {
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }

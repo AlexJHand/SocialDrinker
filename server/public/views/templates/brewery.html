@@ -15,11 +15,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="beer in sc.returnedBreweryBeers.list | limitTo:10 | filter:beer.breweries[0].name:sc.UserService.brewery.name" ng-href="#/beer" ng-click="sc.beerDetail(beer)">
+                <tr ng-repeat="beer in sc.filteredResults | filter:beer.breweries[0].name:sc.UserService.brewery.name" ng-href="#/beer" ng-click="sc.breweryBeerDetail(beer)">
                 <td>{{beer.nameDisplay}}</td>
                 <td>{{beer.style.name}}</td>
             </tr>
         </tbody>
     </table>
-
+    
+    <ul class="pagination">
+        <li>
+            <a href="" aria-label="Previous"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        </li>
+        <li ng-repeat="page in sc.pageList"><a ng-click="sc.pageResults(page, sc.returnedBreweryBeers)">{{page}}</a></li>
+        <li>
+            <a href="" aria-label="Next">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </a>
+        </li>
+    </ul>
 </div>

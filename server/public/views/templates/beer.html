@@ -1,6 +1,7 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-    <a href="/#/search">Back</a>
+    <!-- <a href="/#/search">Back</a> -->
+    <a ng-click="sc.goBack()">Back</a>
     <h1>{{sc.UserService.beer.nameDisplay}}</h1>
     <img ng-src="{{sc.UserService.beer.labels.large}}" ng-if="sc.UserService.beer.labels.large">
     <div ng-if="sc.UserService.beer.breweries[0].name">Brewery: {{sc.UserService.beer.breweries[0].name}}</div>

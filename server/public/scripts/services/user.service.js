@@ -7,6 +7,7 @@ myApp.service('UserService', function ($http, $location) {
   self.ratingObject = {};
   self.beer = {};
   self.brewery = {};
+  self.userBeer = {};
   self.beers = {
     list: []
   };
@@ -28,7 +29,21 @@ myApp.service('UserService', function ($http, $location) {
       data: [self.beer, self.userObject.userName, self.ratingObject]
     }).then(function (response) {
       console.log('Response:', response);
-    })
+      }).then(swal(
+        'Success',
+        'This beer has been added to your list!',
+        'success'
+      ));
+  }
+
+  self.deleteUserBeer = function () {
+    console.log('In UserService.deleteUserBeer', self.userBeer);
+    $http({
+      method: 'DELETE',
+      url: '/list/' + self.userBeer.id
+    }).then(function (response) {
+      console.log('Received', response);
+    });
   }
 
   self.getBeer = function (beerIn) {
@@ -100,4 +115,5 @@ myApp.service('UserService', function ($http, $location) {
       $location.path("/home");
     });
   }
+
 });
