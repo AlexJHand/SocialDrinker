@@ -47,7 +47,7 @@ myApp.service('UserService', function ($http, $location) {
   }
 
   self.getBeer = function (beerIn) {
-    $http({
+    return $http({
       method: 'GET',
       url: '/beer/' + beerIn
     }).then(function (response) {
@@ -58,7 +58,7 @@ myApp.service('UserService', function ($http, $location) {
   }
 
   self.getBrewery = function (breweryIn) {
-    $http({
+    return $http({
       method: 'GET',
       url: '/brewery/' + breweryIn
     }).then(function (response) {

@@ -72,8 +72,8 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
         console.log('In searchBeer()');
         console.log('vm.search.beer:', vm.search.inputBeer);
         UserService.getBeer(vm.search.inputBeer).then(function() {
-            console.log('vm.returnedBeers: ', vm.returnedBeers);
-            vm.pageResults(1, vm.returnedBeers);
+            console.log('vm.returnedBeers: ', vm.returnedBeers.list);
+            vm.pageResults(1, vm.returnedBeers.list);
             vm.search = {};
             vm.beerForm.$setPristine();    
         });
@@ -82,11 +82,13 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     vm.searchBrewery = function () {
         console.log('In searchBrewery()');
         console.log('vm.search.brewery:', vm.search.inputBrewery);
-        UserService.getBrewery(vm.search.inputBrewery);
-        console.log('vm.returnedBreweries: ', vm.returnedBreweries);
-        console.log('vm.breweryId', vm.breweryId);
-        vm.search = {};
-        vm.breweryForm.$setPristine();
+        UserService.getBrewery(vm.search.inputBrewery).then(function () {
+            console.log('vm.returnedBreweries: ', vm.returnedBreweries);
+            console.log('vm.breweryId', vm.breweryId);
+            vm.pageResults(1, vm.returnedBreweries.list);
+            vm.search = {};
+            vm.breweryForm.$setPristine();
+        });
     }
 
     vm.searchBreweryBeers = function () {
@@ -106,10 +108,14 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
 
     vm.showBeerSearch = function () {
         vm.showBeerInput = true;
+        vm.filteredResults = [];
+        vm.pageList = [];
     }
 
     vm.showBrewerySearch = function () {
         vm.showBeerInput = false;
+        vm.filteredResults = [];
+        vm.pageList = [];
     }
 
     // vm.pageResults = function (currentPage) {
@@ -127,7 +133,7 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     vm.pageResults = function (currentPage, listToPaginate) {
         console.log('In pageResults()');
         console.log('listToPaginate:', listToPaginate.list);
-        var start = (currentPage - 1) * vm.numPerPage || 1;
+        var start = (currentPage - 1) * vm.numPerPage;
         var end = start + vm.numPerPage;
         vm.filteredResults = listToPaginate.list.slice(start, end);
         console.log('filteredResults:', vm.filteredResults);
