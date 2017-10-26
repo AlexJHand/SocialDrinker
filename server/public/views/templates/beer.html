@@ -14,17 +14,25 @@
     <input type="button" value="Add To List" ng-click="sc.showRatings()" ng-hide="sc.showRatingsInputs == true">
     <div ng-show="sc.showRatingsInputs == true">
         <form action="#" name="sc.ratingsForm">
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="rating">Rating</label>
                 <select id="rating" class="form-control" ng-model="sc.rating">
-                    <option> </option>
                     <option>5</option>
                     <option>4</option>
                     <option>3</option>
                     <option>2</option>
                     <option>1</option>
                 </select>
+            </div> -->
+
+            <div class="rating">
+                <i id="star1" class="fa fa-star fa-4x" aria-hidden="true"></i>
+                <i id="star2" class="fa fa-star-o fa-4x" aria-hidden="true" ng-click="toggleStar2"></i>
+                <i id="star3" class="fa fa-star-o fa-4x" aria-hidden="true"></i>
+                <i id="star4" class="fa fa-star-o fa-4x" aria-hidden="true"></i>
+                <i id="star5" class="fa fa-star-o fa-4x" aria-hidden="true"></i>
             </div>
+
             <div class="form-group">
                 <label for="comment">Leave a Comment</label>
                 <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" ng-model="sc.comment"></textarea>

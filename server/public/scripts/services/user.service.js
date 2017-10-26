@@ -98,7 +98,7 @@ myApp.service('UserService', function ($http, $location) {
 
   self.getUserBeers = function () {
     console.log('In getUserBeers');
-    $http({
+    return $http({
       method: 'GET',
       url: '/list'
     }).then(function (response) {

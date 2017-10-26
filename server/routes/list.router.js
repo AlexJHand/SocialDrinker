@@ -90,10 +90,22 @@ router.post('/', function (req, res) {
 
         var userId = req.user.id;
         var beerName = req.body[0].name;
-        var beerBrewery = req.body[0].breweries[0].name;
-        var beerLocation = req.body[0].breweries[0].locations[0].locality;
-        var beerRegion = req.body[0].breweries[0].locations[0].region;
-        var beerCountry = req.body[0].breweries[0].locations[0].country.displayName;
+        // console.log('req.body[0]-->', req.body[0]);
+        if (req.body[0].breweries) {
+            console.log('Brewery!');
+            var beerBrewery = req.body[0].breweries[0].name;
+            var beerLocation = req.body[0].breweries[0].locations[0].locality;
+            var beerRegion = req.body[0].breweries[0].locations[0].region;
+            var beerCountry = req.body[0].breweries[0].locations[0].country.displayName;
+        } else {
+            console.log('No brewery!');
+             var beerBrewery = null;
+             var beerLocation = null;
+             var beerLocation = null;
+             var beerRegion = null;
+             var beerCountry = null;
+        }
+        
         var beerStyle = req.body[0].style.shortName;
         var beerRating = req.body[2].rating;
         var beerComment = req.body[2].comment;

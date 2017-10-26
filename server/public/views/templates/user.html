@@ -14,11 +14,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="beer in uc.returnedUserBeers.list.list" ng-href="#/userBeer" ng-click="uc.userBeerDetail(beer)">
+            <tr ng-repeat="beer in uc.filteredResults" ng-href="#/userBeer" ng-click="uc.userBeerDetail(beer)">
                 <td>{{beer.beer_name}}</td>
                 <td>{{beer.brewery_name}}</td>
             </tr>
         </tbody>
     </table>
+    <ul class="pagination">
+        <li>
+            <a href="" aria-label="Previous">
+                <span class="glyphicon glyphicon-arrow-left" ng-click="uc.moveOnePage('previous', uc.returnedUserBeers.list)"></span>
+            </a>
+        </li>
+        <li ng-repeat="page in uc.pageList">
+            <a ng-click="uc.pageResults(page, uc.returnedUserBeers.list)">{{page}}</a>
+        </li>
+        <li>
+            <a href="" aria-label="Next">
+                <span class="glyphicon glyphicon-arrow-right" ng-click="uc.moveOnePage('next', uc.returnedUserBeers.list)"></span>
+            </a>
+        </li>
+    </ul>
 
 </div>

@@ -8,11 +8,13 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     vm.showBeerInput = true;
     vm.breweryId = '';
     vm.lastPage = '';
+    vm.thisPage = 1;
     vm.currentPage = 1;
     vm.numPerPage = 10;
     vm.filteredResults = [];
     vm.pageList = [];
     vm.totalPages = 0;
+    vm.star = 'fa fa- star - o fa- 4x';
 
     vm.search = {
         inputBeer: '',
@@ -118,22 +120,32 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
         vm.pageList = [];
     }
 
-    // vm.pageResults = function (currentPage) {
-    //     console.log('In pageResults()');
-    //     var start = (currentPage - 1) * vm.numPerPage || 1;
-    //     var end = start + vm.numPerPage;
-    //     vm.filteredResults = vm.returnedBreweryBeers.list.slice(start, end);
-    //     console.log('filteredResults:', vm.filteredResults);
-    //     console.log('vm.returnedBreweryBeers.list.length', vm.returnedBreweryBeers.list.length);
-    //     vm.totalPages = vm.returnedBreweryBeers.list.length / vm.numPerPage;
-    //     console.log('vm.totalPages', vm.totalPages);
-    //     vm.selectPage();
-    // }
+    vm.moveOnePage = function (direction, listToPaginate) {
+        console.log('In moveOnePage');
+        console.log('direction', direction);
+        console.log('listToPaginate:', listToPaginate.list);
+        if (direction === 'previous') {
+            if (vm.thisPage === 1) {
+                vm.pageResults(vm.thisPage, listToPaginate);
+            } else {
+                vm.thisPage--;
+                vm.pageResults(vm.thisPage, listToPaginate);
+            }
+        } else if (direction === 'next') {
+            if (vm.thisPage === vm.totalPages) {
+                vm.pageResults(vm.thisPage, listToPaginate);
+            } else {
+                vm.thisPage++;
+                vm.pageResults(vm.thisPage, listToPaginate);
+            }
+        }
+    }
 
     vm.pageResults = function (currentPage, listToPaginate) {
         console.log('In pageResults()');
         console.log('listToPaginate:', listToPaginate.list);
-        var start = (currentPage - 1) * vm.numPerPage;
+        vm.thisPage = currentPage;
+        var start = (vm.thisPage - 1) * vm.numPerPage;
         var end = start + vm.numPerPage;
         vm.filteredResults = listToPaginate.list.slice(start, end);
         console.log('filteredResults:', vm.filteredResults);

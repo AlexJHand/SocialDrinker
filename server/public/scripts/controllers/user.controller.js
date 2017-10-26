@@ -8,6 +8,15 @@ myApp.controller('UserController', function ($location, UserService) {
   };
   vm.returnedUserBeers.list = UserService.userBeers
 
+  vm.lastPage = '';
+  vm.thisPage = 1;
+  vm.currentPage = 1;
+  vm.numPerPage = 10;
+  vm.filteredResults = [];
+  vm.pageList = [];
+  vm.totalPages = 0;
+
+
   vm.deleteUserBeer = (function () {
     console.log('In deleteUserBeer()');
  swal({
@@ -31,8 +40,11 @@ myApp.controller('UserController', function ($location, UserService) {
 
   vm.displayUserBeers = function () {
     console.log('In displayUserBeers()');
-    UserService.getUserBeers();
-    console.log('vm.returnedUserBeers:', vm.returnedUserBeers);
+    UserService.getUserBeers().then(function () {
+      console.log('vm.returnedUserBeers:', vm.returnedUserBeers);
+      vm.pageResults(1, vm.returnedUserBeers.list);
+    });;
+   
   }
 
   vm.userBeerDetail = function(beer) {
@@ -41,5 +53,48 @@ myApp.controller('UserController', function ($location, UserService) {
     $location.path('/userBeer');
     vm.userService.userBeer = beer;
     console.log('vm.userService.userBeer:', vm.userService.userBeer);
+  }
+
+  vm.moveOnePage = function (direction, listToPaginate) {
+    console.log('In moveOnePage');
+    console.log('direction', direction);
+    console.log('listToPaginate:', listToPaginate.list);
+    if (direction === 'previous') {
+      if (vm.thisPage === 1) {
+        vm.pageResults(vm.thisPage, listToPaginate);
+      } else {
+        vm.thisPage--;
+        vm.pageResults(vm.thisPage, listToPaginate);
+      }
+    } else if (direction === 'next') {
+      if (vm.thisPage === vm.totalPages) {
+        vm.pageResults(vm.thisPage, listToPaginate);
+      } else {
+        vm.thisPage++;
+        vm.pageResults(vm.thisPage, listToPaginate);
+      }
+    }
+  }
+
+  vm.pageResults = function (currentPage, listToPaginate) {
+    console.log('In pageResults()');
+    console.log('listToPaginate:', listToPaginate.list);
+    vm.thisPage = currentPage;
+    var start = (currentPage - 1) * vm.numPerPage;
+    var end = start + vm.numPerPage;
+    vm.filteredResults = listToPaginate.list.slice(start, end);
+    console.log('filteredResults:', vm.filteredResults);
+    console.log('listToPaginate.list.length', listToPaginate.list.length);
+    vm.totalPages = listToPaginate.list.length / vm.numPerPage;
+    console.log('vm.totalPages', vm.totalPages);
+    vm.selectPage();
+  }
+
+  vm.selectPage = function () {
+    console.log('In selectPage()');
+    for (var i = 1; i < vm.totalPages + 1; i++) {
+      vm.pageList.push(i);
+    }
+    console.log('vm.pageList', vm.pageList);
   }
 });
