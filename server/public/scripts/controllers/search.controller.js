@@ -14,7 +14,7 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     vm.filteredResults = [];
     vm.pageList = [];
     vm.totalPages = 0;
-    vm.star = 'fa fa- star - o fa- 4x';
+    vm.rating = 1;
 
     vm.search = {
         inputBeer: '',
@@ -27,6 +27,11 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     vm.returnedBreweryBeers = UserService.breweryBeers;
     vm.totalItems = vm.returnedBreweryBeers.length;
     vm.showRatingsInputs = false;
+
+    vm.toggle2 = false;
+    vm.toggle3 = false;
+    vm.toggle4 = false;
+    vm.toggle5 = false;
 
     vm.addBeer = function () {
         console.log('In sc.addBeer()');
@@ -161,6 +166,46 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
             vm.pageList.push(i);
         }
         console.log('vm.pageList', vm.pageList);
+    }
+
+    vm.toggleStar1 = function () {
+        vm.toggle2 = false;
+        vm.toggle3 = false;
+        vm.toggle4 = false;
+        vm.toggle5 = false;
+        vm.rating = 1;
+    }
+
+    vm.toggleStar2 = function () {
+        vm.toggle2 = !vm.toggle2;
+        vm.toggle3 = false;
+        vm.toggle4 = false;
+        vm.toggle5 = false;
+        vm.rating = 2;
+    }
+
+    vm.toggleStar3 = function () {
+        vm.toggle2 = true;
+        vm.toggle3 = !vm.toggle3;
+        vm.toggle4 = false;
+        vm.toggle5 = false;
+        vm.rating = 3;
+    }
+
+    vm.toggleStar4 = function () {
+        vm.toggle2 = true;
+        vm.toggle3 = true;
+        vm.toggle4 = !vm.toggle4;
+        vm.toggle5 = false;
+        vm.rating = 4;
+    }
+
+    vm.toggleStar5 = function () {
+        vm.toggle2 = true;
+        vm.toggle3 = true;
+        vm.toggle4 = true;
+        vm.toggle5 = !vm.toggle5;
+        vm.rating = 5;
     }
 
 });

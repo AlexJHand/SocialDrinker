@@ -26,11 +26,24 @@
             </div> -->
 
             <div class="rating">
-                <i id="star1" class="fa fa-star fa-4x" aria-hidden="true"></i>
-                <i id="star2" class="fa fa-star-o fa-4x" aria-hidden="true" ng-click="toggleStar2"></i>
-                <i id="star3" class="fa fa-star-o fa-4x" aria-hidden="true"></i>
-                <i id="star4" class="fa fa-star-o fa-4x" aria-hidden="true"></i>
-                <i id="star5" class="fa fa-star-o fa-4x" aria-hidden="true"></i>
+                <i id="star1" class="fa fa-star fa-4x" aria-hidden="true" ng-click="sc.toggleStar1()"></i>
+                <i id="star2" aria-hidden="true" ng-click="sc.toggleStar2()">
+                    <span class="fa fa-star-o fa-4x" ng-hide="sc.toggle2"></span>
+                    <span class="fa fa-star fa-4x" ng-show="sc.toggle2"></span>
+                </i>
+
+                <i id="star3" aria-hidden="true" ng-click="sc.toggleStar3()">
+                    <span class="fa fa-star-o fa-4x" ng-hide="sc.toggle3"></span>
+                    <span class="fa fa-star fa-4x" ng-show="sc.toggle3"></span>
+                </i>
+                <i id="star4" aria-hidden="true" ng-click="sc.toggleStar4()">
+                    <span class="fa fa-star-o fa-4x" ng-hide="sc.toggle4"></span>
+                    <span class="fa fa-star fa-4x" ng-show="sc.toggle4"></span>
+                </i>
+                <i id="star5" aria-hidden="true" ng-click="sc.toggleStar5()">
+                    <span class="fa fa-star-o fa-4x" ng-hide="sc.toggle5"></span>
+                    <span class="fa fa-star fa-4x" ng-show="sc.toggle5"></span>
+                </i>
             </div>
 
             <div class="form-group">
