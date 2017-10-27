@@ -1,39 +1,45 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container" ng-init="uc.displayUserBeers()">
+<div class="container pageView" ng-init="uc.displayUserBeers()">
 
-    <h1 id="welcome" class="lead">{{uc.userObject.userName}}</h1>
-    
+    <!-- <h1 id="welcome" class="lead">{{uc.userObject.userName}}</h1> -->
 
-    <h2>Let's display some stuff.</h2>
-    <table class="table table-hover">
-        <caption>Search Results</caption>
-        <thead>
-            <tr>
-                <th>Beer</th>
-                <th>Brewery</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="beer in uc.filteredResults" ng-href="#/userBeer" ng-click="uc.userBeerDetail(beer)">
-                <td>{{beer.beer_name}}</td>
-                <td>{{beer.brewery_name}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <ul class="pagination">
-        <li>
-            <a href="" aria-label="Previous">
-                <span class="glyphicon glyphicon-arrow-left" ng-click="uc.moveOnePage('previous', uc.returnedUserBeers.list)"></span>
-            </a>
-        </li>
-        <li ng-repeat="page in uc.pageList">
-            <a ng-click="uc.pageResults(page, uc.returnedUserBeers.list)">{{page}}</a>
-        </li>
-        <li>
-            <a href="" aria-label="Next">
-                <span class="glyphicon glyphicon-arrow-right" ng-click="uc.moveOnePage('next', uc.returnedUserBeers.list)"></span>
-            </a>
-        </li>
-    </ul>
 
+    <!-- <h2>Let's display some stuff.</h2> -->
+    <div class="panel panel-default userPanel">
+        <div class="panel-body userPanelInfo">
+            <h1 id="userName" >{{uc.userObject.userName}}</h1>
+            <h3 class="totalBeers">Total Beers Drank: {{uc.totalBeers}}</h3>
+        </div>
+
+        <table class="table table-hover col-md-8">
+            <caption>The beers that you have drank</caption>
+            <thead>
+                <tr>
+                    <th>Beer</th>
+                    <th>Brewery</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="beer in uc.filteredResults" ng-href="#/userBeer" ng-click="uc.userBeerDetail(beer)">
+                    <td>{{beer.beer_name}}</td>
+                    <td>{{beer.brewery_name}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ul class="pagination">
+            <li>
+                <a href="" aria-label="Previous">
+                    <span class="glyphicon glyphicon-arrow-left" ng-click="uc.moveOnePage('previous', uc.returnedUserBeers.list)"></span>
+                </a>
+            </li>
+            <li ng-repeat="page in uc.pageList">
+                <a ng-click="uc.pageResults(page, uc.returnedUserBeers.list)">{{page}}</a>
+            </li>
+            <li>
+                <a href="" aria-label="Next">
+                    <span class="glyphicon glyphicon-arrow-right" ng-click="uc.moveOnePage('next', uc.returnedUserBeers.list)"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

@@ -1,8 +1,10 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   font-size: 14px;
+  background-color: #FFD25A;
 }
 
 .instructions .container h1 {
@@ -24,8 +26,8 @@ body, html {
   margin-top: 10px;
 }
 
-.container p{
-  margin-top : 14px;
+.container p {
+  margin-top: 14px;
 }
 
 .message {
@@ -37,14 +39,14 @@ body, html {
 }
 
 .message:nth-child(odd) {
-   background-color: #eeeeee;
+  background-color: #eeeeee;
 }
 
 .message:nth-child(even) {
   background-color: #f8f8f8;
 }
 
-.btn-danger{
+.btn-danger {
   margin-left: 10px;
 }
 
@@ -73,7 +75,9 @@ li a {
   text-decoration: none;
 }
 
+
 /* Change the link color to #111 (black) on hover */
+
 li a:hover {
   text-decoration: underline;
   color: #eee;
@@ -81,4 +85,57 @@ li a:hover {
 
 .fa-star {
   color: gold;
+}
+
+#loginImg {
+  margin-top: 20px;
+  height: 500px;
+  right: -50px;
+}
+
+.loginBox {
+  width: 28%;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  position: relative;
+  top: 90px;
+  background-color: #FFF05A;
+  /* text-align: center;
+  width: 300px; */
+}
+
+.pageView {
+}
+
+.contentView {
+  background-color: white;
+}
+
+.table {
+  background-color: white;
+}
+
+.pageInfo {
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.userPanelInfo {
+  text-align: center;
+}
+
+
+#userName {
+  /* float: left; */
+  text-align: center;
+} 
+
+.totalBeers {
+  text-align: center;
+}
+
+.pagination {
+  /* align-content: center; */
 }

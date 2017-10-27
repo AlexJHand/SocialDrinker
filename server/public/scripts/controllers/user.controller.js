@@ -15,6 +15,7 @@ myApp.controller('UserController', function ($location, UserService) {
   vm.filteredResults = [];
   vm.pageList = [];
   vm.totalPages = 0;
+  vm.totalBeers = 0;
 
 
   vm.deleteUserBeer = (function () {
@@ -80,6 +81,8 @@ myApp.controller('UserController', function ($location, UserService) {
     console.log('In pageResults()');
     console.log('listToPaginate:', listToPaginate.list);
     vm.thisPage = currentPage;
+    vm.totalBeers = listToPaginate.list.length;
+    console.log('total beer:', vm.totalBeers);
     var start = (currentPage - 1) * vm.numPerPage;
     var end = start + vm.numPerPage;
     vm.filteredResults = listToPaginate.list.slice(start, end);
