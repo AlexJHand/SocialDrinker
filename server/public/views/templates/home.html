@@ -4,11 +4,11 @@
         <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
             <form ng-submit="lc.login()">
                 <div>
-                    <label for="username">Username:</label>
+                    <label class="loginLabel" for="username">Username:</label>
                     <input type="text" ng-model="lc.user.username" />
                 </div>
                 <div>
-                    <label for="password">Password:</label>
+                    <label class="loginLabel" for="password">Password:</label>
                     <input type="password" ng-model="lc.user.password" />
                 </div>
                 <div>
@@ -17,5 +17,5 @@
                 </div>
             </form>
     </div>
-    <img class="col-sm-8"id="loginImg" src="/images/two-steins.jpg" alt="">
+    <img class="col-sm-7"id="loginImg" src="/images/two-steins.jpg" alt="">
 </div>

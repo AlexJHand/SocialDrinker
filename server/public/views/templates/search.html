@@ -4,23 +4,23 @@
         In Search Page
     </p>
 
-    <div class="row">
+    <div class="row searchSelect">
         <div class="col-sm-6">
-            <button class="btn btn-info btn-block" ng-click="sc.showBeerSearch()">Search By Beer</button>
+            <button class="btn btn-block btn-default" ng-click="sc.showBeerSearch()">Search By Beer</button>
         </div>
         <div class="col-sm-6">
-            <button class="btn btn-info btn-block" ng-click="sc.showBrewerySearch()">Search By Brewery</button>
+            <button class="btn btn-block btn-default" ng-click="sc.showBrewerySearch()">Search By Brewery</button>
         </div>
     </div>
 
-    <form action="#" name="sc.beerForm" ng-show="sc.showBeerInput">
+    <form class="beerForm" action="#" name="sc.beerForm" ng-show="sc.showBeerInput">
         <div class="form-group">
             <label for="beerName">Beer Name</label>
             <input type="text" autofocus required id="beerName" class="form-control" placeholder="Beer Name" ng-model="sc.search.inputBeer">
         </div>
         <br>
         <div class="form-group">
-            <input type="button" value="Search" class="form-control" ng-click="sc.searchBeer()">
+            <button type="button" class="form-control btn-block btn-default" ng-click="sc.searchBeer()">Search Beer</button>
         </div>
     </form>
 
@@ -67,7 +67,7 @@
             </div>
             <br>
             <div class="form-group">
-                <input type="button" value="Search Brewery" class="form-control" ng-click="sc.searchBrewery()">
+                <button type="button" class="form-control btn-block btn-default" ng-click="sc.searchBrewery()">Search Brewery</button>
             </div>
         </form>
 

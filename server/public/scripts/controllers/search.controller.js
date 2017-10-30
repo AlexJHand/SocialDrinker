@@ -177,7 +177,7 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     }
 
     vm.toggleStar2 = function () {
-        vm.toggle2 = !vm.toggle2;
+        vm.toggle2 = true;
         vm.toggle3 = false;
         vm.toggle4 = false;
         vm.toggle5 = false;
@@ -186,7 +186,7 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
 
     vm.toggleStar3 = function () {
         vm.toggle2 = true;
-        vm.toggle3 = !vm.toggle3;
+        vm.toggle3 = true;
         vm.toggle4 = false;
         vm.toggle5 = false;
         vm.rating = 3;
@@ -195,7 +195,7 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     vm.toggleStar4 = function () {
         vm.toggle2 = true;
         vm.toggle3 = true;
-        vm.toggle4 = !vm.toggle4;
+        vm.toggle4 = true;
         vm.toggle5 = false;
         vm.rating = 4;
     }
@@ -204,7 +204,7 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
         vm.toggle2 = true;
         vm.toggle3 = true;
         vm.toggle4 = true;
-        vm.toggle5 = !vm.toggle5;
+        vm.toggle5 = true;
         vm.rating = 5;
     }
 

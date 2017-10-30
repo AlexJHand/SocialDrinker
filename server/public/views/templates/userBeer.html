@@ -1,18 +1,58 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container pageView contentView" ng-init="uc.displayUserBeers()">
-    <a href="/#/user">Back</a>
+    <a class="backButton" href="/#/user">Back</a>
+    <div class="beerView">
+        <h1>{{uc.userService.userBeer.beer_name}}</h1>
+        <img ng-src="{{uc.userService.userBeer.image}}" ng-if="uc.userService.userBeer.image">
+        <div ng-if="uc.userService.userBeer.brewery_name">Brewery: {{uc.userService.userBeer.brewery_name}}</div>
+        <div ng-if="uc.userService.userBeer.brewery_location && uc.userService.userBeer.brewery_region">Location: {{uc.userService.userBeer.brewery_location}}, {{uc.userService.userBeer.brewery_region}}</div>
+        <div ng-if="uc.userService.userBeer.brewery_country">Country: {{uc.userService.userBeer.brewery_country}}</div>
+        <div ng-if="uc.userService.userBeer.style">Style: {{uc.userService.userBeer.style}}</div>
 
-    <h1>{{uc.userService.userBeer.beer_name}}</h1>
-    <img ng-src="{{uc.userService.userBeer.image}}" ng-if="uc.userService.userBeer.image">
-    <div ng-if="uc.userService.userBeer.brewery_name">Brewery: {{uc.userService.userBeer.brewery_name}}</div>
-    <div ng-if="uc.userService.userBeer.brewery_location && uc.userService.userBeer.brewery_region">Location: {{uc.userService.userBeer.brewery_location}}, {{uc.userService.userBeer.brewery_region}}</div>
-    <div ng-if="uc.userService.userBeer.brewery_country">Country: {{uc.userService.userBeer.brewery_country}}</div>
-    <div ng-if="uc.userService.userBeer.style">Style: {{uc.userService.userBeer.style}}</div>
-    <div ng-if="uc.userService.userBeer.rating">User Rating: {{uc.userService.userBeer.rating}}</div>
-    <div ng-if="uc.userService.userBeer.comment">User Comment: {{uc.userService.userBeer.comment}}</div>
-    <div class="row">
-        <div class="col-sm-8">
-            <button class="btn btn-info btn-block btn-default active" ng-click="uc.deleteUserBeer()">Delete Beer</button>
+        <div ng-show="uc.userService.userBeer.rating === 1">
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+        </div>
+
+        <div ng-show="uc.userService.userBeer.rating === 2">
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+        </div>
+
+        <div ng-show="uc.userService.userBeer.rating === 3">
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+        </div>
+
+        <div ng-show="uc.userService.userBeer.rating === 4">
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star-o fa-4x"></span>
+        </div>
+
+        <div ng-show="uc.userService.userBeer.rating === 5">
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+            <span class="fa fa-star fa-4x"></span>
+        </div>
+        <div ng-if="uc.userService.userBeer.comment">User Comment: {{uc.userService.userBeer.comment}}</div>
+        <div class="row">
+            <div class="text-center deleteButton">
+                <button id="deleteButton" class="btn btn-block btn-default" ng-click="uc.deleteUserBeer()">Delete Beer</button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,10 +1,10 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container pageView contentView" ng-init="sc.searchBreweryBeers(brewery)">
-    <a href="/#/search">Back</a>
-    <h1>{{sc.UserService.brewery.name}}</h1>
-    <img ng-src="{{sc.UserService.brewery.images.large}}" ng-if="sc.UserService.brewery.images.large">
-    <h3>{{sc.UserService.brewery.id}}</h3>
-
+    <a class="backButton" href="/#/search">Back</a>
+    <div class="beerView">
+        <h1 class="beerName">{{sc.UserService.brewery.name}}</h1>
+        <img ng-src="{{sc.UserService.brewery.images.large}}" ng-if="sc.UserService.brewery.images.large">
+    </div>
     <table class="table table-hover">
         <caption>Search Results</caption>
         <thead>
@@ -14,22 +14,27 @@
             </tr>
         </thead>
         <tbody>
-                <tr ng-repeat="beer in sc.filteredResults | filter:beer.breweries[0].name:sc.UserService.brewery.name" ng-href="#/beer" ng-click="sc.breweryBeerDetail(beer)">
+            <tr ng-repeat="beer in sc.filteredResults | filter:beer.breweries[0].name:sc.UserService.brewery.name" ng-href="#/beer" ng-click="sc.breweryBeerDetail(beer)">
                 <td>{{beer.nameDisplay}}</td>
                 <td>{{beer.style.name}}</td>
             </tr>
         </tbody>
     </table>
-    
+
     <ul class="pagination">
         <li>
-            <a href="" aria-label="Previous"><span class="glyphicon glyphicon-arrow-left"></span></a>
+            <a href="" aria-label="Previous">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </a>
         </li>
-        <li ng-repeat="page in sc.pageList"><a ng-click="sc.pageResults(page, sc.returnedBreweryBeers)">{{page}}</a></li>
+        <li ng-repeat="page in sc.pageList">
+            <a ng-click="sc.pageResults(page, sc.returnedBreweryBeers)">{{page}}</a>
+        </li>
         <li>
             <a href="" aria-label="Next">
                 <span class="glyphicon glyphicon-arrow-right"></span>
             </a>
         </li>
     </ul>
+
 </div>

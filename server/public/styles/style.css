@@ -2,9 +2,13 @@ body,
 html {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  font-size: 14px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
   background-color: #FFD25A;
+}
+
+.lead {
+  font-family: 'Bungee', cursive;
 }
 
 .instructions .container h1 {
@@ -90,11 +94,11 @@ li a:hover {
 #loginImg {
   margin-top: 20px;
   height: 500px;
-  right: -50px;
+  right: -90px;
 }
 
 .loginBox {
-  width: 28%;
+  width: 40%;
   margin-top: 20px;
   padding-bottom: 20px;
   padding-left: 40px;
@@ -105,11 +109,16 @@ li a:hover {
   width: 300px; */
 }
 
-.pageView {
+.loginLabel {
+  display: inline-block;
+  width: 120px;
 }
+
+.pageView {}
 
 .contentView {
   background-color: white;
+  margin-bottom: 20px;
 }
 
 .table {
@@ -122,15 +131,23 @@ li a:hover {
   margin-bottom: 20px;
 }
 
+.userPanel {
+  padding: 20px;
+}
+
 .userPanelInfo {
   text-align: center;
 }
 
-
 #userName {
   /* float: left; */
   text-align: center;
-} 
+  font-family: 'Bungee', cursive;
+}
+
+.beerName {
+  font-family: 'Bungee', cursive;
+}
 
 .totalBeers {
   text-align: center;
@@ -139,3 +156,38 @@ li a:hover {
 .pagination {
   /* align-content: center; */
 }
+
+#deleteButton {
+  width: 40%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.beerView {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.backButton {
+  text-align: left;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.addBeerButton {
+  margin: 20px;
+}
+
+.searchSelect {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.beerForm {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/* font-family: 'Bungee', cursive; */
