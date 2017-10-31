@@ -13,14 +13,14 @@
         </div>
     </div>
 
-    <form class="beerForm" action="#" name="sc.beerForm" ng-show="sc.showBeerInput">
+    <form class="beerForm" action="/#/search" name="sc.beerForm" ng-show="sc.showBeerInput">
         <div class="form-group">
             <label for="beerName">Beer Name</label>
             <input type="text" autofocus required id="beerName" class="form-control" placeholder="Beer Name" ng-model="sc.search.inputBeer">
         </div>
         <br>
         <div class="form-group">
-            <button type="button" class="form-control btn-block btn-default" ng-click="sc.searchBeer()">Search Beer</button>
+            <button type="submit" class="form-control btn-block btn-default" ng-click="sc.searchBeer()">Search Beer</button>
         </div>
     </form>
 
@@ -60,7 +60,7 @@
     </div>
 
     <div  ng-hide="sc.showBeerInput">
-        <form action="#" name="sc.breweryForm">
+        <form action="/#/search" name="sc.breweryForm">
             <div class="form-group">
                 <label for="breweryName">Brewery Name</label>
                 <input type="text" autofocus required id="breweryName" class="form-control" placeholder="Brewery Name" ng-model="sc.search.inputBrewery">
