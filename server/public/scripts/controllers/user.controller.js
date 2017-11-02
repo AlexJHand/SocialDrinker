@@ -20,7 +20,7 @@ myApp.controller('UserController', function ($location, UserService) {
 
   vm.deleteUserBeer = (function () {
     console.log('In deleteUserBeer()');
- swal({
+    swal({
       title: 'Are you sure?',
       text: "You won't be able to undo this!",
       type: 'warning',
@@ -28,7 +28,7 @@ myApp.controller('UserController', function ($location, UserService) {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, remove it!'
- }).then(function () {
+    }).then(function () {
       swal(
         'Removed',
         'This beer has been removed from your list.',
@@ -36,7 +36,7 @@ myApp.controller('UserController', function ($location, UserService) {
       );
       UserService.deleteUserBeer();
       $location.path('/user');
-      });
+    });
   })
 
   vm.displayUserBeers = function () {
@@ -45,10 +45,10 @@ myApp.controller('UserController', function ($location, UserService) {
       console.log('vm.returnedUserBeers:', vm.returnedUserBeers);
       vm.pageResults(1, vm.returnedUserBeers.list);
     });;
-   
+
   }
 
-  vm.userBeerDetail = function(beer) {
+  vm.userBeerDetail = function (beer) {
     console.log('In userBeerDetail');
     console.log('Beer clicked:', beer);
     $location.path('/userBeer');

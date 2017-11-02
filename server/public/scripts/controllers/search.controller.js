@@ -147,6 +147,12 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
     }
 
     vm.pageResults = function (currentPage, listToPaginate) {
+
+
+        vm.pageList = [];
+        vm.totalPages = 0;
+
+        
         console.log('In pageResults()');
         console.log('listToPaginate:', listToPaginate.list);
         vm.thisPage = currentPage;
