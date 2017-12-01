@@ -61,7 +61,11 @@ CREATE TABLE "users_beersdrank" (
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+![Image of User Page]
+(https://github.com/AlexJHand/SocialDrinker/blob/master/server/public/images/Screen%20Shot%202017-11-30%20at%207.58.16%20PM.png)
+
+![Image of Beer Page]
+(https://github.com/AlexJHand/SocialDrinker/blob/master/server/public/images/Screen%20Shot%202017-11-30%20at%207.59.50%20PM.png)
 
 ## Documentation
 
