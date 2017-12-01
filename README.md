@@ -65,32 +65,26 @@ CREATE TABLE "users_beersdrank" (
 
 ![Image of Beer Page](https://github.com/AlexJHand/SocialDrinker/blob/master/server/public/images/Screen%20Shot%202017-11-30%20at%207.59.50%20PM.png)
 
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
 
 ### Completed Features
 
-High level list of items completed.
-
-- [x] Feature a
-- [x] Feature b
+- [x] Authorized user accounts
+- [x] Saved user beer lists
+- [x] Ability to view and delete existing user ratings and comments
+- [x] Search functionality by beer name and brewery name
+- [x] Detailed beer page with pertinent information
+- [x] Star rating system
 
 ### Next Steps
 
-Features that you would like to add at some point in the future.
-
-- [ ] Feature c
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+- [ ] Ability to view beers consumed by friends
+- [ ] Assign brewery image to beers that don't already have an image
 
 ## Authors
 
-* Name of author(s)
+* Alex Hand
 
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Thank you to BreweryDB
