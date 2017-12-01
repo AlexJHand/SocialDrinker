@@ -1,32 +1,61 @@
 # Social Drinker
 
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
+Social Drinker is an application that allows users to search for beers that they've consumed and them save them to a list along with their personal rating and comments for each. Searching by the name of the beer, or by the name of the brewery that produces it, users will be able to see information about that beer, including style, ibu's, abv, and location produced. 
 
 ## Built With
 
-List technologies and frameworks here
+HTML5, CSS3, AngularJS, NodeJS, Express, Passport, PostgreSQL, BreweryDB api, Sweet Alerts, Google Fonts.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+Clone these files to your local machine, ensure that you have a PostgreSQL database correctly configured, and make sure to install the required dependencies via Node.js.
 
 ### Prerequisites
 
 Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
+- PostgreSQL
+- Dependencies
+  - angular
+  - angular-route
+  - bcrypt
+  - body-parser
+  - express
+  - passport
+  - path
 
 
 ### Installing
 
-Steps to get the development environment running.
+After the dependencies are installed, use ```npm start``` to start the server, which will run on port 5000.
 
 ```sql
 CREATE TABLE "users" (
   "id" serial primary key,
   "username" varchar(80) not null UNIQUE,
   "password" varchar(240) not null
+);
+
+CREATE TABLE "beersdrank" (
+	"id" serial primary key,
+	"beer_name" varchar(80) not null,
+	"brewery_name" varchar(100),
+	"brewery_location" varchar(100),
+	"brewery_region" varchar(50),
+	"brewery_country" varchar(50),
+	"style" varchar(50),
+	"description" varchar(1000),
+	"image" varchar(200)
+);
+
+CREATE TABLE "users_beersdrank" (
+	"id" serial primary key,
+	users_id integer NOT NULL REFERENCES users,
+	beersdrank_id integer NOT NULL REFERENCES beersdrank,
+	"rating" integer,
+	"comment" varchar(300)
 );
 ```
 

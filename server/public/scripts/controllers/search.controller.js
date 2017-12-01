@@ -69,9 +69,11 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
         vm.UserService.beer = beer;
     }
 
-    vm.goBack = function () {
+    vm.goBack = function (currentPage) {
         console.log('Going back');
+        console.log('Going from:', currentPage);
         console.log('Going to:', vm.UserService.lastPage);
+        console.log('returnedBeers', vm.returnedBeers.list);
         $location.path(vm.UserService.lastPage);
     }
 
@@ -152,7 +154,7 @@ myApp.controller('SearchController', function ($location, $log, UserService) {
         vm.pageList = [];
         vm.totalPages = 0;
 
-        
+
         console.log('In pageResults()');
         console.log('listToPaginate:', listToPaginate.list);
         vm.thisPage = currentPage;
