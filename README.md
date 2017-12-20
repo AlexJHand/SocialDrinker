@@ -4,7 +4,7 @@ Social Drinker is an application that allows users to search for beers that they
 
 ### Link
 
-[SocialDrinker.herokuapp.com](http://www.socialdrinker.herokuapp.com)
+[SocialDrinker.herokuapp.com](http://socialdrinker.herokuapp.com)
 
 ## Built With
 
