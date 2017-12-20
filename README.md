@@ -2,6 +2,10 @@
 
 Social Drinker is an application that allows users to search for beers that they've consumed and them save them to a list along with their personal rating and comments for each. Searching by the name of the beer, or by the name of the brewery that produces it, users will be able to see information about that beer, including style, ibu's, abv, and location produced. 
 
+### Link
+
+[SocialDrinker.herokuapp.com](http://www.socialdrinker.herokuapp.com)
+
 ## Built With
 
 HTML5, CSS3, AngularJS, NodeJS, Express, Passport, PostgreSQL, BreweryDB api, Sweet Alerts, Google Fonts.
